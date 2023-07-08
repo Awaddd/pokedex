@@ -3,7 +3,7 @@ import { Pokemon, PokemonDTO } from "../types/pokemon";
 import axios from "axios";
 import { pokemonMapper } from "../network/pokemon-mapper";
 
-const limit = 151;
+const limit = 6;
 
 export const usePokemon = () => {
   const [pokemon, setPokemon] = useState<Pokemon[]>();
@@ -19,10 +19,11 @@ export const usePokemon = () => {
 
         allPokemon.push(pokemonMapper(data));
       }
+
+      setPokemon(allPokemon);
     };
 
     fetchData().catch(console.error);
-    setPokemon(allPokemon);
   }, []);
 
   return [pokemon];
