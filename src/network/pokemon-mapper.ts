@@ -21,7 +21,7 @@ export const pokemonMapper = function ({
     height,
     weight,
     types: pokemonTypes,
-    image: sprites.front_default,
+    image: sprites.other["official-artwork"].front_default,
     stats: pokemonStats,
   };
 };
