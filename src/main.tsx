@@ -4,11 +4,13 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './routes/Home'
 import PokemonDetails from './routes/PokemonDetails'
 import AllPokemon from './routes/AllPokemon'
+import ErrorPage from './routes/ErrorPage'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
