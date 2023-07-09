@@ -12,13 +12,13 @@ function PokemonDetails({ pokemon }: { pokemon: Pokemon }) {
 
         <ul>
           {pokemon.stats.map(stat => (
-            <li>{stat.name}: {stat.value}</li>
+            <li key={stat.name}>{stat.name}: {stat.value}</li>
           ))}
         </ul>
 
         <ul>
           {pokemon.types.map(type => (
-            <li>{type}</li>
+            <li key={type}>{type}</li>
           ))}
         </ul>
       </div>
