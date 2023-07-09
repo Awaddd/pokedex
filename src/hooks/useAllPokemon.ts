@@ -22,7 +22,7 @@ export const useAllPokemon = () => {
 
         data.results.forEach((pokemon) => {
           const item = AllPokemonMapper(pokemon);
-          pokemonArr.push(item);
+          if (item) pokemonArr.push(item);
         });
 
         await localforage.setItem("all_pokemon", pokemonArr);

@@ -8,8 +8,11 @@ import { pokemonImageUrl } from "./api";
 export const AllPokemonMapper = function ({
   name,
   url,
-}: AllPokemonDTO): AllPokemon {
+}: AllPokemonDTO): AllPokemon | undefined {
   const id = getPokemonId(url);
+
+  if (!id) return;
+
   const image = `${pokemonImageUrl}${id}.png`;
 
   return {
