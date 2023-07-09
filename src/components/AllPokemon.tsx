@@ -1,5 +1,7 @@
 import { useAllPokemon } from "../hooks/useAllPokemon";
 import { Link } from "react-router-dom";
+import { capitalise } from "../helpers/capitalise-first-letter";
+import { PokemonCard, PokemonGrid } from "../style/styled-components/all-pokemon";
 
 function AllPokemon() {
   const [allPokemon] = useAllPokemon();
@@ -9,16 +11,16 @@ function AllPokemon() {
   }
 
   return (
-    <>
+    <PokemonGrid>
       {allPokemon.map(item => (
         <Link key={item.id} to={`/pokemon/${item.id}`}>
-          <div>
-            <p>{item.name}</p>
-            <img src={item.image} alt={item.name} height={150} width={150} />
-          </div>
+          <PokemonCard>
+            <h3>{capitalise(item.name)}</h3>
+            <img src={item.image} alt={item.name} />
+          </PokemonCard>
         </Link>
       ))}
-    </>
+    </PokemonGrid>
   )
 }
 

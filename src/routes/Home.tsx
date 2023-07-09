@@ -1,12 +1,13 @@
 import { Outlet } from "react-router-dom";
+import { AppHeader, Layout } from "../style/styled-components/home";
 
-function Root() {
+function Home() {
   return (
-    <>
-      <h1>Pokedex</h1>
+    <Layout>
+      <AppHeader>Pokedex</AppHeader>
       <Outlet />
-    </>
+    </Layout>
   );
 }
 
-export default Root;
+export default Home;
