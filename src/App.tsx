@@ -1,11 +1,11 @@
-import Pokemon from "./components/pokemon"
+import AllPokemon from "./components/AllPokemon"
 
 function App() {
 
   return (
     <>
       <h1>Pokedex</h1>
-      <Pokemon />
+      <AllPokemon />
     </>
   )
 }
