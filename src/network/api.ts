@@ -1,4 +1,4 @@
-export const limit = 6;
+export const limit = 151;
 export const allPokemonUrl = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}`;
 
 // affix with id
