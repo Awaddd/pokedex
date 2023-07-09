@@ -2,8 +2,7 @@ import { AllPokemon, AllPokemonDTO } from "./../types/all-pokemon";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { AllPokemonMapper } from "../network/all-pokemon-mapper";
-import { allPokemonUrl, pokemonImageUrl } from "../network/api";
-import { getPokemonId } from "../helpers/get-pokemon-id";
+import { allPokemonUrl } from "../network/api";
 import localforage from "localforage";
 
 export const useAllPokemon = () => {
@@ -23,8 +22,6 @@ export const useAllPokemon = () => {
 
         data.results.forEach((pokemon) => {
           const item = AllPokemonMapper(pokemon);
-          item.id = getPokemonId(item.url);
-          item.image = `${pokemonImageUrl}${item.id}.png`;
           allPokemon.push(item);
         });
 

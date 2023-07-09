@@ -11,8 +11,7 @@ function AllPokemon() {
   return (
     <>
       {allPokemon.map(item => (
-        // hardcoded id for now
-        <Link key={item.name} to={`/pokemon/${1}`}>
+        <Link key={item.id} to={`/pokemon/${item.id}`}>
           <div>
             <p>{item.name}</p>
             <img src={item.image} alt={item.name} height={150} width={150} />

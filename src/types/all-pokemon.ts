@@ -4,8 +4,8 @@ export interface AllPokemonDTO {
 }
 
 export interface AllPokemon {
-  id?: number;
+  id: number;
   name: string;
   url: string;
-  image?: string;
+  image: string;
 }
