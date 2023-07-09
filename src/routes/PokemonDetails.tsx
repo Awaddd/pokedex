@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { usePokemon } from "../hooks/usePokemon";
+import { capitalise } from "../helpers/capitalise-first-letter";
+import { Pokemon, PokemonTypes } from "../style/styled-components/pokemon";
 
 function PokemonDetails() {
   const { id } = useParams();
@@ -8,26 +10,26 @@ function PokemonDetails() {
   if (!pokemon) return null
 
   return (
-    <>
-      <div key={pokemon.id}>
-        <h2>{pokemon.name}</h2>
-        <img src={pokemon.image} alt={pokemon.name} height={150} width={150} />
-        <p>Height: {pokemon.height}</p>
-        <p>Weight: {pokemon.weight}</p>
+    <Pokemon>
+      <img src={pokemon.image} alt={pokemon.name} />
 
-        <ul>
-          {pokemon.stats.map(stat => (
-            <li key={stat.name}>{stat.name}: {stat.value}</li>
-          ))}
-        </ul>
+      <PokemonTypes>
+        {pokemon.types.map(type => (
+          <li key={type}>{capitalise(type)}</li>
+        ))}
+      </PokemonTypes>
 
-        <ul>
-          {pokemon.types.map(type => (
-            <li key={type}>{type}</li>
-          ))}
-        </ul>
-      </div>
-    </>
+      <h2>{capitalise(pokemon.name)}</h2>
+
+      <p>Height: {pokemon.height}</p>
+      <p>Weight: {pokemon.weight}</p>
+
+      <ul>
+        {pokemon.stats.map(stat => (
+          <li key={stat.name}>{capitalise(stat.name)}: {stat.value}</li>
+        ))}
+      </ul>
+    </Pokemon>
   )
 }
 
