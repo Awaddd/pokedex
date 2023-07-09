@@ -4,11 +4,13 @@ import { capitalise } from "../helpers/capitalise-first-letter";
 import { PokemonCard, PokemonGrid } from "../style/styled-components/all-pokemon";
 
 function AllPokemon() {
-  const [allPokemon] = useAllPokemon();
+  const [allPokemon, error] = useAllPokemon();
 
-  if (!allPokemon) {
-    return null;
-  }
+  if (error) return (
+    <p>{error}</p>
+  )
+
+  if (!allPokemon) return null
 
   return (
     <PokemonGrid>

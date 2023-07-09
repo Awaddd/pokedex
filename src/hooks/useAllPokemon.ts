@@ -5,8 +5,12 @@ import { AllPokemonMapper } from "../network/all-pokemon-mapper";
 import { allPokemonUrl } from "../network/api";
 import localforage from "localforage";
 
-export const useAllPokemon = () => {
+export const useAllPokemon = (): [
+  AllPokemon[] | undefined,
+  string | undefined
+] => {
   const [allPokemon, setAllPokemon] = useState<AllPokemon[]>();
+  const [error, setError] = useState<string>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,8 +35,12 @@ export const useAllPokemon = () => {
       setAllPokemon(pokemonArr);
     };
 
-    fetchData().catch(console.error);
+    fetchData().catch(() => {
+      setError(
+        "Sorry, the pokemon could not be loaded at this time. Please try again later"
+      );
+    });
   }, []);
 
-  return [allPokemon];
+  return [allPokemon, error];
 };

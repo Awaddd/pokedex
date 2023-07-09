@@ -5,8 +5,11 @@ import localforage from "localforage";
 import { Pokemon, PokemonDTO } from "../types/pokemon";
 import { pokemonMapper } from "../network/pokemon-mapper";
 
-export const usePokemon = (id: number) => {
+export const usePokemon = (
+  id: number
+): [Pokemon | undefined, string | undefined] => {
   const [pokemon, setPokemon] = useState<Pokemon>();
+  const [error, setError] = useState<string>();
 
   useEffect(() => {
     if (!id) return;
@@ -26,8 +29,12 @@ export const usePokemon = (id: number) => {
       setPokemon(temp);
     };
 
-    fetchData().catch(console.error);
+    fetchData().catch(() => {
+      setError(
+        "Sorry, this pokemon could not be loaded at this time. Please try again later"
+      );
+    });
   }, [id]);
 
-  return [pokemon];
+  return [pokemon, error];
 };

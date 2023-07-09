@@ -5,7 +5,11 @@ import { Pokemon, PokemonTypes } from "../style/styled-components/pokemon";
 
 function PokemonDetails() {
   const { id } = useParams();
-  const [pokemon] = usePokemon(parseInt(id!));
+  const [pokemon, error] = usePokemon(parseInt(id!));
+
+  if (error) return (
+    <p>{error}</p>
+  )
 
   if (!pokemon) return null
 
