@@ -8,9 +8,9 @@ function AllPokemon() {
 
   if (error) return (
     <p>{error}</p>
-  )
+  );
 
-  if (!allPokemon) return null
+  if (!allPokemon) return null;
 
   return (
     <PokemonGrid>
@@ -23,7 +23,7 @@ function AllPokemon() {
         </Link>
       ))}
     </PokemonGrid>
-  )
+  );
 }
 
 export default AllPokemon;

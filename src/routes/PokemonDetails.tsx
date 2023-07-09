@@ -9,9 +9,9 @@ function PokemonDetails() {
 
   if (error) return (
     <p>{error}</p>
-  )
+  );
 
-  if (!pokemon) return null
+  if (!pokemon) return null;
 
   return (
     <Pokemon>
@@ -34,7 +34,7 @@ function PokemonDetails() {
         ))}
       </ul>
     </Pokemon>
-  )
+  );
 }
 
 export default PokemonDetails;

@@ -16,7 +16,7 @@ export const Layout = styled.main`
   }
 `;
 
-export const AppHeader = styled.h1`
+export const Header = styled.h1`
   padding: 0;
   margin: 0;
   font-size: 3.2em;
