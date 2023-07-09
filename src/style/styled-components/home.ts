@@ -21,4 +21,9 @@ export const Header = styled.h1`
   margin: 0;
   font-size: 3.2em;
   line-height: 1.1;
+  cursor: pointer;
+
+  a {
+    color: #fff;
+  }
 `;

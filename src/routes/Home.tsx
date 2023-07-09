@@ -1,10 +1,10 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Header, Layout } from "../style/styled-components/home";
 
 function Home() {
   return (
     <Layout>
-      <Header>Pokedex</Header>
+      <Header><Link to={'/'}>Pokedex</Link></Header>
       <Outlet />
     </Layout>
   );
