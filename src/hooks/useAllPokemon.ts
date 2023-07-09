@@ -4,25 +4,33 @@ import axios from "axios";
 import { AllPokemonMapper } from "../network/all-pokemon-mapper";
 import { allPokemonUrl, pokemonImageUrl } from "../network/api";
 import { getPokemonId } from "../helpers/get-pokemon-id";
+import localforage from "localforage";
 
 export const useAllPokemon = () => {
   const [allPokemon, setAllPokemon] = useState<AllPokemon[]>();
 
   useEffect(() => {
     const fetchData = async () => {
-      const pokemonArray: AllPokemon[] = [];
+      let allPokemon: AllPokemon[] = [];
 
-      const { data } = await axios.get<{ results: AllPokemonDTO[] }>(
-        allPokemonUrl
-      );
+      const cached = await localforage.getItem<AllPokemon[]>("all_pokemon");
 
-      data.results.forEach((pokemon) => {
-        const item = AllPokemonMapper(pokemon);
-        item.image = `${pokemonImageUrl}${getPokemonId(item.url)}.png`;
-        pokemonArray.push(item);
-      });
+      if (cached) allPokemon = cached;
+      else {
+        const { data } = await axios.get<{ results: AllPokemonDTO[] }>(
+          allPokemonUrl
+        );
 
-      setAllPokemon(pokemonArray);
+        data.results.forEach((pokemon) => {
+          const item = AllPokemonMapper(pokemon);
+          item.image = `${pokemonImageUrl}${getPokemonId(item.url)}.png`;
+          allPokemon.push(item);
+        });
+
+        await localforage.setItem("all_pokemon", allPokemon);
+      }
+
+      setAllPokemon(allPokemon);
     };
 
     fetchData().catch(console.error);
