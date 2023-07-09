@@ -2,8 +2,8 @@ import ReactDOM from 'react-dom/client'
 import './style/css/index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './routes/Home'
-import PokemonDetails from './components/PokemonDetails'
-import AllPokemon from './components/AllPokemon'
+import PokemonDetails from './routes/PokemonDetails'
+import AllPokemon from './routes/AllPokemon'
 
 const router = createBrowserRouter([
   {
