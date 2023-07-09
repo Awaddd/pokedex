@@ -23,7 +23,8 @@ export const useAllPokemon = () => {
 
         data.results.forEach((pokemon) => {
           const item = AllPokemonMapper(pokemon);
-          item.image = `${pokemonImageUrl}${getPokemonId(item.url)}.png`;
+          item.id = getPokemonId(item.url);
+          item.image = `${pokemonImageUrl}${item.id}.png`;
           allPokemon.push(item);
         });
 

@@ -4,6 +4,7 @@ export interface AllPokemonDTO {
 }
 
 export interface AllPokemon {
+  id?: number;
   name: string;
   url: string;
   image?: string;

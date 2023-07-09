@@ -1,6 +1,27 @@
-import { Pokemon } from "../types/pokemon";
+import { useEffect, useState } from "react";
+import { Pokemon, PokemonDTO } from "../types/pokemon";
+import { pokemonMapper } from "../network/pokemon-mapper";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { pokemonUrl } from "../network/api";
 
-function PokemonDetails({ pokemon }: { pokemon: Pokemon }) {
+function PokemonDetails() {
+  const { id } = useParams();
+
+  const [pokemon, setPokemon] = useState<Pokemon>();
+
+  useEffect(() => {
+    if (!id) return;
+
+    const fetchData = async () => {
+      const { data } = await axios.get<PokemonDTO>(`${pokemonUrl}${id}`);
+      setPokemon(pokemonMapper(data));
+    };
+
+    fetchData().catch(console.error);
+  }, [id])
+
+  if (!pokemon) return null
 
   return (
     <>
